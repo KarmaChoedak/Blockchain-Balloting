@@ -25,6 +25,7 @@ public class IOUState implements LinearState, QueryableState {
     private final Integer value;
     private final Party lender;
     private final Party borrower;
+    private final String site;
     private final UniqueIdentifier linearId;
 
     /**
@@ -35,12 +36,14 @@ public class IOUState implements LinearState, QueryableState {
     public IOUState(Integer value,
                     Party lender,
                     Party borrower,
-                    UniqueIdentifier linearId)
+                    UniqueIdentifier linearId,
+                    String site)
     {
         this.value = value;
         this.lender = lender;
         this.borrower = borrower;
         this.linearId = linearId;
+        this.site = site;
     }
 
     public Integer getValue() { return value; }

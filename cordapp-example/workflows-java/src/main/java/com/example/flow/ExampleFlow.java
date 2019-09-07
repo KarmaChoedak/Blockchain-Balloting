@@ -87,7 +87,7 @@ public class ExampleFlow {
             progressTracker.setCurrentStep(GENERATING_TRANSACTION);
             // Generate an unsigned transaction.
             Party me = getOurIdentity();
-            IOUState iouState = new IOUState(iouValue, me, otherParty, new UniqueIdentifier());
+            IOUState iouState = new IOUState(iouValue, me, otherParty, new UniqueIdentifier(), "Hello");
             final Command<IOUContract.Commands.Create> txCommand = new Command<>(
                     new IOUContract.Commands.Create(),
                     ImmutableList.of(iouState.getLender().getOwningKey(), iouState.getBorrower().getOwningKey()));
