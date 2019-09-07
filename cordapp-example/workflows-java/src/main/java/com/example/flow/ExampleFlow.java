@@ -36,6 +36,7 @@ public class ExampleFlow {
 
         private final int iouValue;
         private final Party otherParty;
+        private  final String site;
 
         private final Step GENERATING_TRANSACTION = new Step("Generating transaction based on new IOU.");
         private final Step VERIFYING_TRANSACTION = new Step("Verifying contract constraints.");
@@ -64,9 +65,10 @@ public class ExampleFlow {
                 FINALISING_TRANSACTION
         );
 
-        public Initiator(int iouValue, Party otherParty) {
+        public Initiator(int iouValue, Party otherParty, String site) {
             this.iouValue = iouValue;
             this.otherParty = otherParty;
+            this.site = site;
         }
 
         @Override
@@ -87,7 +89,7 @@ public class ExampleFlow {
             progressTracker.setCurrentStep(GENERATING_TRANSACTION);
             // Generate an unsigned transaction.
             Party me = getOurIdentity();
-            IOUState iouState = new IOUState(iouValue, me, otherParty, new UniqueIdentifier(), "Hello");
+            IOUState iouState = new IOUState(iouValue, me, otherParty, new UniqueIdentifier(), site);
             final Command<IOUContract.Commands.Create> txCommand = new Command<>(
                     new IOUContract.Commands.Create(),
                     ImmutableList.of(iouState.getLender().getOwningKey(), iouState.getBorrower().getOwningKey()));
