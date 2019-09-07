@@ -60,6 +60,7 @@ public class IOUState implements LinearState, QueryableState {
                     this.lender.getName().toString(),
                     this.borrower.getName().toString(),
                     this.value,
+                    this.site,
                     this.linearId.getId());
         } else {
             throw new IllegalArgumentException("Unrecognised schema $schema");

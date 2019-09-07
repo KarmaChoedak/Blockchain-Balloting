@@ -23,13 +23,15 @@ public class IOUSchemaV1 extends MappedSchema {
         @Column(name = "lender") private final String lender;
         @Column(name = "borrower") private final String borrower;
         @Column(name = "value") private final int value;
+        @Column(name = "site") private final String site;
         @Column(name = "linear_id") private final UUID linearId;
 
 
-        public PersistentIOU(String lender, String borrower, int value, UUID linearId) {
+        public PersistentIOU(String lender, String borrower, int value, String site, UUID linearId) {
             this.lender = lender;
             this.borrower = borrower;
             this.value = value;
+            this.site = site;
             this.linearId = linearId;
         }
 
@@ -38,8 +40,11 @@ public class IOUSchemaV1 extends MappedSchema {
             this.lender = null;
             this.borrower = null;
             this.value = 0;
+            this.site = null;
             this.linearId = null;
         }
+
+        public String getSite() { return site; }
 
         public String getLender() {
             return lender;
